@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet">
+  <title>Cronometro</title>
+</head>
+
+</style>
+<body>
+  <header>
+    <div id="container">
+      <h1>CRONOMETRO SIMPLES
+      </h1>
+
+    </div>
+  </header>
+  <main>
+
+      <section>
+         <div class="container">
+         <br><br>
+         <div class="row">
+           <p>
+           <span id="timer_horas">00</span> :
+           <span id="timer_minutos">00</span> :
+           <span id="timer_segundos">00</span> :
+           <span id="timer_decimo">00</span> 
+          </p>
+          <br>
+         </div>
+         <br>
+         <button id="Iniciar" onclick="iniciarCronometro()">INICIAR</button>
+         <button id="Zerar" onclick="zerarCronometro()">ZERAR</button>
+
+
+
+
+
+
+         </div>
+
+
+
+
+
+
+
+      </section>
+
+
+
+
+
+  </main>
+  <script type="text/javascript">
+    
+    var cronometro_id = 0;
+
+function iniciarCronometro(){
+    document.getElementById("btnIniciar");
+    document.getElementById("btnZerar");
+
+    var timer_horas = document.getElementById("timer_horas");
+    var timer_minutos = document.getElementById("timer_minutos");
+    var timer_segundos = document.getElementById("timer_segundos");
+    var timer_decimo = document.getElementById("timer_decimo");
+
+    var h = 0; m = 0; s = 0; d = 0;
+
+    cronometro_id = setInterval(function () {
+        timer_horas.innerHTML = h < 10 ? '0' + h : h;
+        timer_minutos.innerHTML = m < 10 ? '0' + m : m;
+        timer_segundos.innerHTML = s < 10 ? '0' + s : s;
+        timer_decimo.innerHTML = d < 10 ? '0' + d : d;
+
+        if(d < 9) { d += 1; }
+        else if(s < 59) { d = 0; s += 1; }
+        else if(m < 59) { d = 0; s = 0; m += 1; }
+        else if(h < 23) { d = 0; s = 0;  m = 0; h += 1; }
+        else { alert('Ops! Estourou as 24h!!!'); }
+    }, 100);
+}
+
+function zerarCronometro(){
+    document.getElementById("btnIniciar");
+    document.getElementById("btnZerar");
+
+    clearInterval(cronometro_id);
+
+    document.getElementById("timer_horas").innerHTML = "00";
+    document.getElementById("timer_minutos").innerHTML = "00";
+    document.getElementById("timer_segundos").innerHTML = "00";
+    document.getElementById("timer_decimo").innerHTML = "00";
+}
+
+
+   
+
+
+
+  
+  
+
+
+</script>
+  
+</body>
+</html>
